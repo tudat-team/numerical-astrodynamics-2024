@@ -1,0 +1,6 @@
+# Data files
+*.dat
+
+# PyCharm files
+.idea/
+
