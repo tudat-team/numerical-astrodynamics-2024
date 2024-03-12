@@ -12,7 +12,7 @@ http://tudat.tudelft.nl/LICENSE.
 from interplanetary_transfer_helper_functions import *
 
 # Load spice kernels.
-spice_interface.load_standard_kernels( )
+spice.load_standard_kernels( )
 
 # Define directory where simulation output will be written
 output_directory = "./SimulationOutput/"
