@@ -14,7 +14,7 @@ import numpy as np
 from tudatpy.io import save2txt
 from tudatpy import constants
 from tudatpy import numerical_simulation
-from tudatpy.interface import spice_interface
+from tudatpy.interface import spice
 from tudatpy.numerical_simulation import environment_setup
 from tudatpy.numerical_simulation import estimation_setup
 from tudatpy.numerical_simulation import propagation_setup
@@ -126,14 +126,14 @@ def get_lambert_problem_result(
     central_body_gravitational_parameter = bodies.get_body("Sun").gravitational_parameter
 
     # Set initial and final positions for Lambert targeter
-    initial_state = spice_interface.get_body_cartesian_state_at_epoch(
+    initial_state = spice.get_body_cartesian_state_at_epoch(
         target_body_name="Earth",
         observer_body_name="Sun",
         reference_frame_name=global_frame_orientation,
         aberration_corrections="NONE",
         ephemeris_time=departure_epoch)
 
-    final_state = spice_interface.get_body_cartesian_state_at_epoch(
+    final_state = spice.get_body_cartesian_state_at_epoch(
         target_body_name=target_body,
         observer_body_name="Sun",
         reference_frame_name=global_frame_orientation,
