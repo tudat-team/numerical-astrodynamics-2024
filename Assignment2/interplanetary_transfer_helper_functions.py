@@ -24,10 +24,10 @@ from tudatpy.astro import two_body_dynamics
 from tudatpy.astro import element_conversion
 
 # Define departure/arrival epoch - in seconds since J2000
-departure_epoch = XXXX
-time_of_flight = XXXX
+departure_epoch = 0
+time_of_flight = 6000
 arrival_epoch = departure_epoch + time_of_flight
-target_body = XXXX
+target_body = 2
 global_frame_orientation = 'ECLIPJ2000'
 fixed_step_size = 3600.0
 
@@ -343,7 +343,7 @@ def get_unperturbed_propagator_settings(
         bodies: environment.SystemOfBodies,
         initial_state: np.array,
         initial_time: float,
-        final_time ) -> propagation_setup.propagator.SingleArcPropagatorSettings:
+        termination_condition ) -> propagation_setup.propagator.SingleArcPropagatorSettings:
     """
     Creates the propagator settings for an unperturbed trajectory.
 
@@ -355,7 +355,7 @@ def get_unperturbed_propagator_settings(
 
     initial_time : Epoch since J2000 at which the propagation starts
 
-    final_time : Epoch since J2000 at which the propagation will be terminated
+    termination_condition : Settings for condition upon which the propagation will be terminated
 
     Return
     ------
