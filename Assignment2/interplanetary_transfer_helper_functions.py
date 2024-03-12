@@ -193,7 +193,7 @@ def get_lambert_arc_history(
 # DO NOT MODIFY THIS FUNCTION (OR, DO SO AT YOUR OWN RISK)
 def propagate_trajectory(
         initial_time: float,
-        termination_condition: propagation.PropagationTerminationSettings,
+        termination_condition: propagation_setup.PropagationTerminationSettings,
         bodies: environment.SystemOfBodies,
         lambert_arc_ephemeris: environment.Ephemeris,
         use_perturbations: bool,
@@ -251,7 +251,7 @@ def propagate_trajectory(
 # DO NOT MODIFY THIS FUNCTION (OR, DO SO AT YOUR OWN RISK)
 def propagate_variational_equations(
         initial_time: float,
-        termination_condition: propagation.PropagationTerminationSettings,
+        termination_condition: propagation_setup.PropagationTerminationSettings,
         bodies: environment.SystemOfBodies,
         lambert_arc_ephemeris: environment.Ephemeris,
         initial_state_correction=np.array([0, 0, 0, 0, 0, 0]),
@@ -325,7 +325,7 @@ def get_sensitivity_parameter_set(
 
     Return
     ------
-    Propagation settings of the unperturbed trajectory.
+    Propagation settings of the unperturbed trajecSTUDENT CODE TASK REMOVEtory.
     """
     parameter_settings = estimation_setup.parameter.initial_states(
         propagator_settings, bodies)
@@ -338,7 +338,7 @@ def get_sensitivity_parameter_set(
 
 ################ HELPER FUNCTIONS: MODIFY ########################################
 
-# STUDENT CODE TASK REMOVE - full function (except signature and return)
+# STUDENT CODE TASK - full function (except signature and return)
 def get_unperturbed_propagator_settings(
         bodies: environment.SystemOfBodies,
         initial_state: np.array,
@@ -367,12 +367,12 @@ def get_unperturbed_propagator_settings(
 
     return propagator_settings
 
-# STUDENT CODE TASK REMOVE - full function (except signature and return)
+# STUDENT CODE TASK - full function (except signature and return)
 def get_perturbed_propagator_settings(
         bodies: environment.SystemOfBodies,
         initial_state: np.array,
         initial_time : float,
-        termination_condition: propagation.PropagationTerminationSettings,
+        termination_condition: propagation_setup.PropagationTerminationSettings,
         use_rsw_acceleration = False,
         rsw_acceleration_magnitude = np.array([0,0,0])) -> propagation_setup.propagator.SingleArcPropagatorSettings:
     """
@@ -403,7 +403,8 @@ def get_perturbed_propagator_settings(
     # Define accelerations acting on vehicle.
     acceleration_settings_on_spacecraft = XXXX
 
-    # DO NOT MODIFY, and keep AFTER creation of acceleration_settings_on_spacecraft
+    # DO NOT MODIFY, and keep AFTER creation of acceleration_settings_on_spacecraft, but before
+    # call to function create_acceleration_models
     # (line is added for compatibility with question 4)
     if use_rsw_acceleration:
         acceleration_settings_on_spacecraft["Sun"].append(
@@ -414,7 +415,9 @@ def get_perturbed_propagator_settings(
 
     return propagator_settings
 
-# STUDENT CODE TASK REMOVE - full function (except signature and return)
+# STUDENT CODE TASK - full function (except signature and return)
+# NOTE: Keep this function the same for each question (it does no harm if bodies are
+# added that are not used)
 def create_simulation_bodies( ) -> environment.SystemOfBodies:
 
     """
