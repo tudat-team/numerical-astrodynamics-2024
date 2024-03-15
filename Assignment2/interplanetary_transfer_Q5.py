@@ -32,7 +32,7 @@ lambert_arc_ephemeris = get_lambert_problem_result(bodies, target_body, departur
 number_of_arcs = 10
 arc_length = XXXX
 
-for arc_index in range(number_of_arcs)
+for arc_index in range(number_of_arcs):
 
     # Compute start and end time for current arc
     current_arc_initial_time = XXXX
