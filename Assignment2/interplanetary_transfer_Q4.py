@@ -38,9 +38,10 @@ departure_epoch_with_buffer = XXXX
 arrival_epoch_with_buffer = XXXX
 
 # Solve for state transition matrix on current arc
+termination_settings = propagation_setup.propagator.time_termination( arrival_epoch_with_buffer )
 variational_equations_solver = propagate_variational_equations(
     departure_epoch_with_buffer,
-    arrival_epoch_with_buffer,
+    termination_settings,
     bodies,
     lambert_arc_ephemeris,
     use_rsw_acceleration = True)
