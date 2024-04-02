@@ -15,7 +15,7 @@ from integrator_analysis_helper_functions import *
 current_directory = os.getcwd( )
 
 # Load spice kernels.
-spice.load_standard_kernels()
+spice.load_standard_kernels( )
 spice.load_kernel( current_directory + "/juice_mat_crema_5_1_150lb_v01.bsp" );
 
 # Create the bodies for the numerical simulation

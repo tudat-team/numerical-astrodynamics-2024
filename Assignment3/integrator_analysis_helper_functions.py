@@ -326,10 +326,12 @@ def create_bodies():
 
     # Add radiation pressure interface to vehicle
     radiation_pressure_coefficient = 1.2
-    radiation_pressure_settings = environment_setup.radiation_pressure.cannonball(
-        "Sun", spacecraft_reference_area, radiation_pressure_coefficient)
-    environment_setup.add_radiation_pressure_interface(
-        bodies, "JUICE", radiation_pressure_settings)
+    occulting_bodies_dict = dict()
+    occulting_bodies_dict["Sun"] = ["Ganymede"]
+    vehicle_target_settings = environment_setup.radiation_pressure.cannonball_radiation_target(
+        spacecraft_reference_area, radiation_pressure_coefficient, occulting_bodies_dict)
+    environment_setup.add_radiation_pressure_target_model(
+        bodies, "JUICE", vehicle_target_settings)
 
     return bodies
 
@@ -378,19 +380,3 @@ def get_perturbed_accelerations(
     acceleration_models = ...
 
     return acceleration_models
-
-def get_closest_approach_time( ):
-    """
-    Function that computes the instant of closest approach of the Callisto flyby, for the specific flyby under
-    consideration. In this function, do *not* propagate the dynamics. Instead, use the spice_interface to
-    determine JUICE instant of closest approach based on the pre-laoded Spice kernels
-
-    Parameters
-    ----------
-
-    Return
-    ------
-    Instant of closest approach of the Callisto flyby
-    """
-
-    return ...
